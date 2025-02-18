@@ -1,0 +1,82 @@
+1.
+
+sudo dnf update -y
+sudo dnf install -y wget tar
+
+
+sudo su - jakub_super
+mkdir -p ~/viewpower
+chmod 700 ~/viewpower
+
+
+
+2.
+
+cd ~/viewpower
+wget https://powerwalker.com/software/22039-ViewPowerHTML_Linux_x64.tar
+
+
+
+3. 
+
+tar -xf 22039-ViewPowerHTML_Linux_x64.tar
+
+rm 22039-ViewPowerHTML_Linux_x64.tar
+
+
+########################################################
+########################################################
+
+4. Install
+
+A. Auto via sh
+
+cd ~/viewpower/ViewPowerHTML_Linux_x64
+chmod +x install.sh 2>/dev/null
+./install.sh
+
+
+########################################################
+
+B. Manual install 
+
+mkdir -p ~/.local/bin
+ln -s ~/viewpower/ViewPowerHTML_Linux_x64/viewpower ~/.local/bin/viewpower
+
+chown -R jakub_super:jakub_super ~/viewpower
+chmod -R 700 ~/viewpower
+
+
+5.
+
+viewpower
+
+or 
+
+~/viewpower/ViewPowerHTML_Linux_x64/viewpower
+
+
+########################################################
+########################################################
+########################################################
+
+6. Autorstart on login 
+
+mkdir -p ~/.config/autostart
+
+nano ~/.config/autostart/viewpower.desktop
+
+[Desktop Entry]
+Type=Application
+Exec=/home/jakub_super/.local/bin/viewpower
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=View Power UPS Control
+Comment=Launch View Power for UPS monitoring at login
+
+
+
+
+
+
